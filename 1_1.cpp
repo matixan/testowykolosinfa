@@ -8,5 +8,5 @@ int main(){
         cout << "nie dzielimy przez 0" << endl;
         return 0;
     }
-    cout << (a/b+c/d) << endl;
+    cout << "wynik:" << (a/b+c/d) << endl;
 }
