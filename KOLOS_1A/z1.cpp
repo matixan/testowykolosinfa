@@ -14,7 +14,7 @@ int znajdz(int tab[10]){
         if (tab[i]<min) min=tab[i]; //jesli element tablicy jest mniejszy od min, to min przyjmuje wartosc tego elementu
         if (tab[i]>max) max=tab[i];
     }
-    //cout<<"maks: "<<max<<" min: "<<min<<endl;
+    //cout<<"maks: "<<max<<" min: "<<min<<endl; //wyswietlenie min i max zeby sprawdzic czy dobrze dziala
     return min&max; //zwrocenie iloczynu bitowego
 }
 
