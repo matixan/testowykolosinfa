@@ -1,7 +1,9 @@
 // ZADANIE 2 (zad_2.cpp) - 3.5 pkt:
 // Napisz program, który:
 // - Wczytuje podany przez użytkownika ciąg znaków (zmienna typu string).
-// - Uruchamia funkcję rekurencyjną (nie można używać pętli w funkcji), która wyświetli podany ciąg znaków z podziałem na wiersze. Podział następuje w miejscach występowania znaków interpunkcyjnych (program musi wykrywać . , : ;). (2.5 pkt). Program oblicza również ilość znaków w każdym wyświetlonym wierszu (1 pkt).
+// - Uruchamia funkcję rekurencyjną (nie można używać pętli w funkcji), która wyświetli podany ciąg znaków z podziałem na wiersze. 
+// Podział następuje w miejscach występowania znaków interpunkcyjnych (program musi wykrywać . , : ;). (2.5 pkt). 
+// Program oblicza również ilość znaków w każdym wyświetlonym wierszu (1 pkt). 
 
 // Przykład działania:
 
@@ -11,3 +13,25 @@
 // Ola ma:8
 // kota,6
 // psa i chomika.15
+
+#include <iostream>
+using namespace std;
+
+void czastkowanie(string zdanie){ // z uwagi na to ze nie mozna uzyc petli w funkcji rekurencyjnej to trzeba uzyc funkcji substr() ktora zwraca krotszego stringa
+    if (zdanie.length() == 0) return; // warunek konca rekurencji// zwraca 0 bo nie ma znakow
+    bool znaleziono = false;
+    if (zdanie[0] == '.' || zdanie[0] == ',' || zdanie[0] == ':' || zdanie[0] == ';') znaleziono = true; // jezeli znak jest interpunkcyjny to wypisuje enter
+    cout << zdanie[0]; // wypisuje aktualnie pierwszy znak
+    if (znaleziono) {
+        cout<<zdanie.length()<<endl;
+    } 
+    czastkowanie(zdanie.substr(1));
+    return;
+}
+
+int main(){
+    string zdanie;
+    getline(cin, zdanie);
+    czastkowanie(zdanie); // przyjmuje ze jednak liczenie znakow odbywa sie w rekurencji a nie w programie bo inaczej nie ma sensu
+    return 0; //cout zeby wyswietlic ostatnie zliczenie znakow
+}
